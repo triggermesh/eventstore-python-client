@@ -1,0 +1,319 @@
+/*
+Copyright (c) 2021 TriggerMesh Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+syntax = "proto3";
+option go_package = "github.com/triggermesh/eventstore/pkg/protob";
+package protob;
+
+
+enum ScopeChoice {
+  Instance = 0;
+  Bridge = 1;
+  Global = 2;
+}
+
+message ScopeType {
+  ScopeChoice type = 1;
+  string bridge = 2;
+  string instance = 3;
+}
+
+message LocationType {
+  ScopeType scope = 1;
+  string key = 2;
+}
+
+message SetKVRequest {
+  LocationType location = 1;
+  int32 ttl = 2;
+  bytes value = 3;
+}
+
+message SetKVResponse {}
+
+message IncrKVRequest {
+  LocationType location = 1;
+  int32 incr = 2;
+}
+
+message IncrKVResponse {}
+
+message DecrKVRequest {
+  LocationType location = 1;
+  int32 decr = 2;
+}
+
+message DecrKVResponse {}
+
+message GetKVRequest {
+  LocationType location = 1;
+}
+
+message GetKVResponse {
+  bytes value = 1;
+}
+
+message DelKVRequest {
+  LocationType location = 1;
+}
+
+message DelKVResponse {}
+
+message LockRequest {
+  LocationType location = 1;
+  int32 timeout = 2;
+}
+
+message LockResponse {
+  string unlock = 1;
+}
+
+message UnlockRequest {
+  LocationType location = 1;
+  string unlock = 2;
+}
+
+message UnlockResponse {}
+
+// KV interface
+service KV {
+  // Set KV at storage
+  rpc Set(SetKVRequest) returns (SetKVResponse) {}
+
+  // Incr increments an integer value from storage
+  rpc Incr(IncrKVRequest) returns (IncrKVResponse) {}
+
+  // Decr decrements an integer value from storage
+  rpc Decr(DecrKVRequest) returns (DecrKVResponse) {}
+
+  // Del item from storage
+  rpc Del(DelKVRequest) returns (DelKVResponse) {}
+
+  // Get item from storage
+  rpc Get(GetKVRequest) returns (GetKVResponse) {}
+
+  // Lock the key for exclusive access
+  rpc Lock(LockRequest) returns (LockResponse) {}
+
+  // Unlock the key
+  rpc Unlock(UnlockRequest) returns (UnlockResponse) {}
+}
+
+
+message NewMapRequest {
+  LocationType location = 1;
+  int32 ttl = 2;
+}
+
+message NewMapResponse {}
+
+message DelMapRequest {
+  LocationType location = 1;
+}
+
+message DelMapResponse {}
+
+message GetAllMapFieldsRequest {
+  LocationType location = 1;
+}
+
+message GetAllMapFieldsResponse {
+  map<string, bytes> values = 1;
+}
+
+message LenMapRequest {
+  LocationType location = 1;
+}
+
+message LenMapResponse {
+  int32 len = 1;
+}
+
+message SetMapFieldRequest {
+  LocationType location = 1;
+  string field = 2;
+  bytes value = 3;
+}
+
+message SetMapFieldResponse {}
+
+message IncrMapFieldRequest {
+  LocationType location = 1;
+  string field = 2;
+  int32 incr = 3;
+}
+
+message IncrMapFieldResponse {}
+
+message DecrMapFieldRequest {
+  LocationType location = 1;
+  string field = 2;
+  int32 decr = 3;
+}
+
+message DecrMapFieldResponse {}
+
+message DelMapFieldRequest {
+  LocationType location = 1;
+  string field = 2;
+}
+
+message DelMapFieldResponse {}
+
+message GetMapFieldRequest {
+  LocationType location = 1;
+  string field = 2;
+}
+
+message GetMapFieldResponse {
+  bytes value = 1;
+}
+
+// Map interface
+service Map {
+
+  // New map
+  rpc New(NewMapRequest) returns (NewMapResponse) {}
+
+  // GetFields all KVs in map
+  rpc GetFields(GetAllMapFieldsRequest) returns (GetAllMapFieldsResponse) {}
+
+  // Len for the map
+  rpc Len(LenMapRequest) returns (LenMapResponse) {}
+
+  // Del map
+  rpc Del(DelMapRequest) returns (DelMapResponse) {}
+
+  // FieldSet KV at map
+  rpc FieldSet(SetMapFieldRequest) returns (SetMapFieldResponse) {}
+
+  // FieldIncr increments integer value at map
+  rpc FieldIncr(IncrMapFieldRequest) returns (IncrMapFieldResponse) {}
+
+  // FieldDecr decrements integer value at map
+  rpc FieldDecr(DecrMapFieldRequest) returns (DecrMapFieldResponse) {}
+
+  // FieldDel key at map
+  rpc FieldDel(DelMapFieldRequest) returns (DelMapFieldResponse) {}
+
+  // FieldGet value at key
+  rpc FieldGet(GetMapFieldRequest) returns (GetMapFieldResponse) {}
+
+  // Lock the map for exclusive access
+  rpc Lock(LockRequest) returns (LockResponse) {}
+
+  // Unlock the map
+  rpc Unlock(UnlockRequest) returns (UnlockResponse) {}
+}
+
+
+message NewQueueRequest {
+  LocationType location = 1;
+  int32 ttl = 2;
+}
+
+message NewQueueResponse {}
+
+message DelQueueRequest {
+  LocationType location = 1;
+}
+
+message DelQueueResponse {}
+
+message GetAllQueuesRequest {
+  LocationType location = 1;
+}
+
+message GetAllQueuesResponse {
+  repeated bytes values = 1;
+}
+
+message LenQueueRequest {
+  LocationType location = 1;
+}
+
+message LenQueueResponse {
+  int32 len = 1;
+}
+
+message PushQueueRequest {
+  LocationType location = 1;
+  bytes value = 2;
+}
+
+message PushQueueResponse {}
+
+message IndexQueueRequest {
+  LocationType location = 1;
+  int32 index = 2;
+}
+
+message IndexQueueResponse {
+  bytes value = 1;
+}
+
+message PopQueueRequest {
+  LocationType location = 1;
+}
+
+message PopQueueResponse {
+  bytes value = 1;
+}
+
+message PeekQueueRequest {
+  LocationType location = 1;
+}
+
+message PeekQueueResponse {
+  bytes value = 1;
+}
+
+// Queue interface
+service Queue {
+
+  // New queue
+  rpc New(NewQueueRequest) returns (NewQueueResponse) {}
+
+  // GetAll all elements in queue
+  rpc GetAll(GetAllQueuesRequest) returns (GetAllQueuesResponse) {}
+
+  // Len for the queue
+  rpc Len(LenQueueRequest) returns (LenQueueResponse) {}
+
+  // Del queue
+  rpc Del(DelQueueRequest) returns (DelQueueResponse) {}
+
+  // Push value in map
+  rpc Push(PushQueueRequest) returns (PushQueueResponse) {}
+
+  // Index returns the element at the index
+  rpc Index(IndexQueueRequest) returns (IndexQueueResponse) {}
+
+  // Pop retrieves and removes an element from the queue
+  rpc Pop(PopQueueRequest) returns (PopQueueResponse) {}
+
+  // Peek retrieves an element from the queue
+  rpc Peek(PeekQueueRequest) returns (PeekQueueResponse) {}
+}
+
+service Sync {
+  // Lock key for exclusive access
+  rpc Lock(LockRequest) returns (LockResponse) {}
+
+  // Unlock key
+  rpc Unlock(UnlockRequest) returns (UnlockResponse) {}
+
+}
