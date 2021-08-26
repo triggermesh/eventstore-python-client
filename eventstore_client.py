@@ -9,8 +9,9 @@ class Client:
         
     def NewKV(self, **kwargs):
         ttl = kwargs.get("ttl", None)
+        lockKey = kwargs.get("lockKey", None)
         scope = self.__defineScope(**kwargs)
-        return Client.KV(self, scope, ttl)
+        return Client.KV(self, scope, ttl, lockKey)
     
     def NewMap(self, key, **kwargs):
         ttl = kwargs.get("ttl", None)
@@ -27,13 +28,13 @@ class Client:
     def __defineScope(self, **kwargs):
         bridge = kwargs.get("bridge", None)
         instance = kwargs.get("instance", None)
+        
+        typ = eventstore_pb2.Instance
 
         if bridge == None and instance == None:
             typ = eventstore_pb2.Global
         elif bridge != None and instance == None:
             typ = eventstore_pb2.Bridge
-        else:
-            typ = eventstore_pb2.Instance
 
         return eventstore_pb2.ScopeType(
                     type = typ,
@@ -42,8 +43,9 @@ class Client:
             )
 
     class KV(object):
-        def __init__(self, client, scope, ttl):
+        def __init__(self, client, scope, ttl, lockKey):
             self.ttl = ttl
+            self.lockKey = lockKey
             self.scope = scope
             self.stub = eventstore_pb2_grpc.KVStub(client.channel)
 
@@ -55,6 +57,7 @@ class Client:
             request = eventstore_pb2.SetKVRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
+                    lockKey = self.lockKey,
                     key = key
                 ),
                 ttl = ttl,
@@ -66,6 +69,7 @@ class Client:
             request = eventstore_pb2.GetKVRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
+                    lockKey = self.lockKey,
                     key = key
                 )
             )
@@ -75,6 +79,7 @@ class Client:
             request = eventstore_pb2.DelKVRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
+                    lockKey = self.lockKey,
                     key = key
                 )
             )
@@ -129,14 +134,14 @@ class Client:
             )
             return self.stub.FieldGet(request)
         
-        def GetFields(self):
+        def GetAll(self):
             request = eventstore_pb2.GetAllMapFieldsRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
                     key = self.key
                 )
             )
-            return self.stub.GetFields(request)
+            return self.stub.GetAll(request)
 
         def Len(self):
             request = eventstore_pb2.LenMapRequest(

@@ -289,8 +289,8 @@ class MapStub(object):
                 request_serializer=eventstore__pb2.NewMapRequest.SerializeToString,
                 response_deserializer=eventstore__pb2.NewMapResponse.FromString,
                 )
-        self.GetFields = channel.unary_unary(
-                '/protob.Map/GetFields',
+        self.GetAll = channel.unary_unary(
+                '/protob.Map/GetAll',
                 request_serializer=eventstore__pb2.GetAllMapFieldsRequest.SerializeToString,
                 response_deserializer=eventstore__pb2.GetAllMapFieldsResponse.FromString,
                 )
@@ -352,8 +352,8 @@ class MapServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetFields(self, request, context):
-        """GetFields all KVs in map
+    def GetAll(self, request, context):
+        """GetAll all KVs in map
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -430,8 +430,8 @@ def add_MapServicer_to_server(servicer, server):
                     request_deserializer=eventstore__pb2.NewMapRequest.FromString,
                     response_serializer=eventstore__pb2.NewMapResponse.SerializeToString,
             ),
-            'GetFields': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetFields,
+            'GetAll': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAll,
                     request_deserializer=eventstore__pb2.GetAllMapFieldsRequest.FromString,
                     response_serializer=eventstore__pb2.GetAllMapFieldsResponse.SerializeToString,
             ),
@@ -509,7 +509,7 @@ class Map(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def GetFields(request,
+    def GetAll(request,
             target,
             options=(),
             channel_credentials=None,
@@ -519,7 +519,7 @@ class Map(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protob.Map/GetFields',
+        return grpc.experimental.unary_unary(request, target, '/protob.Map/GetAll',
             eventstore__pb2.GetAllMapFieldsRequest.SerializeToString,
             eventstore__pb2.GetAllMapFieldsResponse.FromString,
             options, channel_credentials,
@@ -696,8 +696,8 @@ class QueueStub(object):
                 )
         self.GetAll = channel.unary_unary(
                 '/protob.Queue/GetAll',
-                request_serializer=eventstore__pb2.GetAllQueuesRequest.SerializeToString,
-                response_deserializer=eventstore__pb2.GetAllQueuesResponse.FromString,
+                request_serializer=eventstore__pb2.GetAllQueueItemsRequest.SerializeToString,
+                response_deserializer=eventstore__pb2.GetAllQueueItemsResponse.FromString,
                 )
         self.Len = channel.unary_unary(
                 '/protob.Queue/Len',
@@ -728,6 +728,16 @@ class QueueStub(object):
                 '/protob.Queue/Peek',
                 request_serializer=eventstore__pb2.PeekQueueRequest.SerializeToString,
                 response_deserializer=eventstore__pb2.PeekQueueResponse.FromString,
+                )
+        self.Lock = channel.unary_unary(
+                '/protob.Queue/Lock',
+                request_serializer=eventstore__pb2.LockRequest.SerializeToString,
+                response_deserializer=eventstore__pb2.LockResponse.FromString,
+                )
+        self.Unlock = channel.unary_unary(
+                '/protob.Queue/Unlock',
+                request_serializer=eventstore__pb2.UnlockRequest.SerializeToString,
+                response_deserializer=eventstore__pb2.UnlockResponse.FromString,
                 )
 
 
@@ -791,6 +801,20 @@ class QueueServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Lock(self, request, context):
+        """Lock the key for exclusive access
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Unlock(self, request, context):
+        """Unlock the key
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_QueueServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -801,8 +825,8 @@ def add_QueueServicer_to_server(servicer, server):
             ),
             'GetAll': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAll,
-                    request_deserializer=eventstore__pb2.GetAllQueuesRequest.FromString,
-                    response_serializer=eventstore__pb2.GetAllQueuesResponse.SerializeToString,
+                    request_deserializer=eventstore__pb2.GetAllQueueItemsRequest.FromString,
+                    response_serializer=eventstore__pb2.GetAllQueueItemsResponse.SerializeToString,
             ),
             'Len': grpc.unary_unary_rpc_method_handler(
                     servicer.Len,
@@ -833,6 +857,16 @@ def add_QueueServicer_to_server(servicer, server):
                     servicer.Peek,
                     request_deserializer=eventstore__pb2.PeekQueueRequest.FromString,
                     response_serializer=eventstore__pb2.PeekQueueResponse.SerializeToString,
+            ),
+            'Lock': grpc.unary_unary_rpc_method_handler(
+                    servicer.Lock,
+                    request_deserializer=eventstore__pb2.LockRequest.FromString,
+                    response_serializer=eventstore__pb2.LockResponse.SerializeToString,
+            ),
+            'Unlock': grpc.unary_unary_rpc_method_handler(
+                    servicer.Unlock,
+                    request_deserializer=eventstore__pb2.UnlockRequest.FromString,
+                    response_serializer=eventstore__pb2.UnlockResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -874,8 +908,8 @@ class Queue(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/protob.Queue/GetAll',
-            eventstore__pb2.GetAllQueuesRequest.SerializeToString,
-            eventstore__pb2.GetAllQueuesResponse.FromString,
+            eventstore__pb2.GetAllQueueItemsRequest.SerializeToString,
+            eventstore__pb2.GetAllQueueItemsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -981,68 +1015,6 @@ class Queue(object):
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
-
-class SyncStub(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def __init__(self, channel):
-        """Constructor.
-
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.Lock = channel.unary_unary(
-                '/protob.Sync/Lock',
-                request_serializer=eventstore__pb2.LockRequest.SerializeToString,
-                response_deserializer=eventstore__pb2.LockResponse.FromString,
-                )
-        self.Unlock = channel.unary_unary(
-                '/protob.Sync/Unlock',
-                request_serializer=eventstore__pb2.UnlockRequest.SerializeToString,
-                response_deserializer=eventstore__pb2.UnlockResponse.FromString,
-                )
-
-
-class SyncServicer(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def Lock(self, request, context):
-        """Lock key for exclusive access
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def Unlock(self, request, context):
-        """Unlock key
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-
-def add_SyncServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-            'Lock': grpc.unary_unary_rpc_method_handler(
-                    servicer.Lock,
-                    request_deserializer=eventstore__pb2.LockRequest.FromString,
-                    response_serializer=eventstore__pb2.LockResponse.SerializeToString,
-            ),
-            'Unlock': grpc.unary_unary_rpc_method_handler(
-                    servicer.Unlock,
-                    request_deserializer=eventstore__pb2.UnlockRequest.FromString,
-                    response_serializer=eventstore__pb2.UnlockResponse.SerializeToString,
-            ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-            'protob.Sync', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-
-
- # This class is part of an EXPERIMENTAL API.
-class Sync(object):
-    """Missing associated documentation comment in .proto file."""
-
     @staticmethod
     def Lock(request,
             target,
@@ -1054,7 +1026,7 @@ class Sync(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protob.Sync/Lock',
+        return grpc.experimental.unary_unary(request, target, '/protob.Queue/Lock',
             eventstore__pb2.LockRequest.SerializeToString,
             eventstore__pb2.LockResponse.FromString,
             options, channel_credentials,
@@ -1071,7 +1043,7 @@ class Sync(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protob.Sync/Unlock',
+        return grpc.experimental.unary_unary(request, target, '/protob.Queue/Unlock',
             eventstore__pb2.UnlockRequest.SerializeToString,
             eventstore__pb2.UnlockResponse.FromString,
             options, channel_credentials,

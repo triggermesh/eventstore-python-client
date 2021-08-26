@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z,github.com/triggermesh/eventstore/pkg/protob',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x10\x65ventstore.proto\x12\x06protob\"P\n\tScopeType\x12!\n\x04type\x18\x01 \x01(\x0e\x32\x13.protob.ScopeChoice\x12\x0e\n\x06\x62ridge\x18\x02 \x01(\t\x12\x10\n\x08instance\x18\x03 \x01(\t\"=\n\x0cLocationType\x12 \n\x05scope\x18\x01 \x01(\x0b\x32\x11.protob.ScopeType\x12\x0b\n\x03key\x18\x02 \x01(\t\"R\n\x0cSetKVRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0b\n\x03ttl\x18\x02 \x01(\x05\x12\r\n\x05value\x18\x03 \x01(\x0c\"\x0f\n\rSetKVResponse\"E\n\rIncrKVRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0c\n\x04incr\x18\x02 \x01(\x05\"\x10\n\x0eIncrKVResponse\"E\n\rDecrKVRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0c\n\x04\x64\x65\x63r\x18\x02 \x01(\x05\"\x10\n\x0e\x44\x65\x63rKVResponse\"6\n\x0cGetKVRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x1e\n\rGetKVResponse\x12\r\n\x05value\x18\x01 \x01(\x0c\"6\n\x0c\x44\x65lKVRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x0f\n\rDelKVResponse\"F\n\x0bLockRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0f\n\x07timeout\x18\x02 \x01(\x05\"\x1e\n\x0cLockResponse\x12\x0e\n\x06unlock\x18\x01 \x01(\t\"G\n\rUnlockRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0e\n\x06unlock\x18\x02 \x01(\t\"\x10\n\x0eUnlockResponse\"D\n\rNewMapRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0b\n\x03ttl\x18\x02 \x01(\x05\"\x10\n\x0eNewMapResponse\"7\n\rDelMapRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x10\n\x0e\x44\x65lMapResponse\"@\n\x16GetAllMapFieldsRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x85\x01\n\x17GetAllMapFieldsResponse\x12;\n\x06values\x18\x01 \x03(\x0b\x32+.protob.GetAllMapFieldsResponse.ValuesEntry\x1a-\n\x0bValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x0c:\x02\x38\x01\"7\n\rLenMapRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x1d\n\x0eLenMapResponse\x12\x0b\n\x03len\x18\x01 \x01(\x05\"Z\n\x12SetMapFieldRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05\x66ield\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\x0c\"\x15\n\x13SetMapFieldResponse\"Z\n\x13IncrMapFieldRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05\x66ield\x18\x02 \x01(\t\x12\x0c\n\x04incr\x18\x03 \x01(\x05\"\x16\n\x14IncrMapFieldResponse\"Z\n\x13\x44\x65\x63rMapFieldRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05\x66ield\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x65\x63r\x18\x03 \x01(\x05\"\x16\n\x14\x44\x65\x63rMapFieldResponse\"K\n\x12\x44\x65lMapFieldRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05\x66ield\x18\x02 \x01(\t\"\x15\n\x13\x44\x65lMapFieldResponse\"K\n\x12GetMapFieldRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05\x66ield\x18\x02 \x01(\t\"$\n\x13GetMapFieldResponse\x12\r\n\x05value\x18\x01 \x01(\x0c\"F\n\x0fNewQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0b\n\x03ttl\x18\x02 \x01(\x05\"\x12\n\x10NewQueueResponse\"9\n\x0f\x44\x65lQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x12\n\x10\x44\x65lQueueResponse\"=\n\x13GetAllQueuesRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"&\n\x14GetAllQueuesResponse\x12\x0e\n\x06values\x18\x01 \x03(\x0c\"9\n\x0fLenQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x1f\n\x10LenQueueResponse\x12\x0b\n\x03len\x18\x01 \x01(\x05\"I\n\x10PushQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05value\x18\x02 \x01(\x0c\"\x13\n\x11PushQueueResponse\"J\n\x11IndexQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05index\x18\x02 \x01(\x05\"#\n\x12IndexQueueResponse\x12\r\n\x05value\x18\x01 \x01(\x0c\"9\n\x0fPopQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"!\n\x10PopQueueResponse\x12\r\n\x05value\x18\x01 \x01(\x0c\":\n\x10PeekQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\"\n\x11PeekQueueResponse\x12\r\n\x05value\x18\x01 \x01(\x0c*3\n\x0bScopeChoice\x12\x0c\n\x08Instance\x10\x00\x12\n\n\x06\x42ridge\x10\x01\x12\n\n\x06Global\x10\x02\x32\x88\x03\n\x02KV\x12\x34\n\x03Set\x12\x14.protob.SetKVRequest\x1a\x15.protob.SetKVResponse\"\x00\x12\x37\n\x04Incr\x12\x15.protob.IncrKVRequest\x1a\x16.protob.IncrKVResponse\"\x00\x12\x37\n\x04\x44\x65\x63r\x12\x15.protob.DecrKVRequest\x1a\x16.protob.DecrKVResponse\"\x00\x12\x34\n\x03\x44\x65l\x12\x14.protob.DelKVRequest\x1a\x15.protob.DelKVResponse\"\x00\x12\x34\n\x03Get\x12\x14.protob.GetKVRequest\x1a\x15.protob.GetKVResponse\"\x00\x12\x33\n\x04Lock\x12\x13.protob.LockRequest\x1a\x14.protob.LockResponse\"\x00\x12\x39\n\x06Unlock\x12\x15.protob.UnlockRequest\x1a\x16.protob.UnlockResponse\"\x00\x32\xd6\x05\n\x03Map\x12\x36\n\x03New\x12\x15.protob.NewMapRequest\x1a\x16.protob.NewMapResponse\"\x00\x12N\n\tGetFields\x12\x1e.protob.GetAllMapFieldsRequest\x1a\x1f.protob.GetAllMapFieldsResponse\"\x00\x12\x36\n\x03Len\x12\x15.protob.LenMapRequest\x1a\x16.protob.LenMapResponse\"\x00\x12\x36\n\x03\x44\x65l\x12\x15.protob.DelMapRequest\x1a\x16.protob.DelMapResponse\"\x00\x12\x45\n\x08\x46ieldSet\x12\x1a.protob.SetMapFieldRequest\x1a\x1b.protob.SetMapFieldResponse\"\x00\x12H\n\tFieldIncr\x12\x1b.protob.IncrMapFieldRequest\x1a\x1c.protob.IncrMapFieldResponse\"\x00\x12H\n\tFieldDecr\x12\x1b.protob.DecrMapFieldRequest\x1a\x1c.protob.DecrMapFieldResponse\"\x00\x12\x45\n\x08\x46ieldDel\x12\x1a.protob.DelMapFieldRequest\x1a\x1b.protob.DelMapFieldResponse\"\x00\x12\x45\n\x08\x46ieldGet\x12\x1a.protob.GetMapFieldRequest\x1a\x1b.protob.GetMapFieldResponse\"\x00\x12\x33\n\x04Lock\x12\x13.protob.LockRequest\x1a\x14.protob.LockResponse\"\x00\x12\x39\n\x06Unlock\x12\x15.protob.UnlockRequest\x1a\x16.protob.UnlockResponse\"\x00\x32\xfe\x03\n\x05Queue\x12:\n\x03New\x12\x17.protob.NewQueueRequest\x1a\x18.protob.NewQueueResponse\"\x00\x12\x45\n\x06GetAll\x12\x1b.protob.GetAllQueuesRequest\x1a\x1c.protob.GetAllQueuesResponse\"\x00\x12:\n\x03Len\x12\x17.protob.LenQueueRequest\x1a\x18.protob.LenQueueResponse\"\x00\x12:\n\x03\x44\x65l\x12\x17.protob.DelQueueRequest\x1a\x18.protob.DelQueueResponse\"\x00\x12=\n\x04Push\x12\x18.protob.PushQueueRequest\x1a\x19.protob.PushQueueResponse\"\x00\x12@\n\x05Index\x12\x19.protob.IndexQueueRequest\x1a\x1a.protob.IndexQueueResponse\"\x00\x12:\n\x03Pop\x12\x17.protob.PopQueueRequest\x1a\x18.protob.PopQueueResponse\"\x00\x12=\n\x04Peek\x12\x18.protob.PeekQueueRequest\x1a\x19.protob.PeekQueueResponse\"\x00\x32v\n\x04Sync\x12\x33\n\x04Lock\x12\x13.protob.LockRequest\x1a\x14.protob.LockResponse\"\x00\x12\x39\n\x06Unlock\x12\x15.protob.UnlockRequest\x1a\x16.protob.UnlockResponse\"\x00\x42.Z,github.com/triggermesh/eventstore/pkg/protobb\x06proto3'
+  serialized_pb=b'\n\x10\x65ventstore.proto\x12\x06protob\"P\n\tScopeType\x12!\n\x04type\x18\x01 \x01(\x0e\x32\x13.protob.ScopeChoice\x12\x0e\n\x06\x62ridge\x18\x02 \x01(\t\x12\x10\n\x08instance\x18\x03 \x01(\t\"N\n\x0cLocationType\x12 \n\x05scope\x18\x01 \x01(\x0b\x32\x11.protob.ScopeType\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x0f\n\x07lockKey\x18\x03 \x01(\t\"R\n\x0cSetKVRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0b\n\x03ttl\x18\x02 \x01(\x05\x12\r\n\x05value\x18\x03 \x01(\x0c\"\x0f\n\rSetKVResponse\"E\n\rIncrKVRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0c\n\x04incr\x18\x02 \x01(\x05\"\x10\n\x0eIncrKVResponse\"E\n\rDecrKVRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0c\n\x04\x64\x65\x63r\x18\x02 \x01(\x05\"\x10\n\x0e\x44\x65\x63rKVResponse\"6\n\x0cGetKVRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x1e\n\rGetKVResponse\x12\r\n\x05value\x18\x01 \x01(\x0c\"6\n\x0c\x44\x65lKVRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x0f\n\rDelKVResponse\"F\n\x0bLockRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0f\n\x07timeout\x18\x02 \x01(\x05\"\x1f\n\x0cLockResponse\x12\x0f\n\x07lockKey\x18\x01 \x01(\t\"7\n\rUnlockRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x10\n\x0eUnlockResponse\"D\n\rNewMapRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0b\n\x03ttl\x18\x02 \x01(\x05\"\x10\n\x0eNewMapResponse\"7\n\rDelMapRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x10\n\x0e\x44\x65lMapResponse\"@\n\x16GetAllMapFieldsRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x85\x01\n\x17GetAllMapFieldsResponse\x12;\n\x06values\x18\x01 \x03(\x0b\x32+.protob.GetAllMapFieldsResponse.ValuesEntry\x1a-\n\x0bValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x0c:\x02\x38\x01\"7\n\rLenMapRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x1d\n\x0eLenMapResponse\x12\x0b\n\x03len\x18\x01 \x01(\x05\"Z\n\x12SetMapFieldRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05\x66ield\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\x0c\"\x15\n\x13SetMapFieldResponse\"Z\n\x13IncrMapFieldRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05\x66ield\x18\x02 \x01(\t\x12\x0c\n\x04incr\x18\x03 \x01(\x05\"\x16\n\x14IncrMapFieldResponse\"Z\n\x13\x44\x65\x63rMapFieldRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05\x66ield\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x65\x63r\x18\x03 \x01(\x05\"\x16\n\x14\x44\x65\x63rMapFieldResponse\"K\n\x12\x44\x65lMapFieldRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05\x66ield\x18\x02 \x01(\t\"\x15\n\x13\x44\x65lMapFieldResponse\"K\n\x12GetMapFieldRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05\x66ield\x18\x02 \x01(\t\"$\n\x13GetMapFieldResponse\x12\r\n\x05value\x18\x01 \x01(\x0c\"F\n\x0fNewQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\x0b\n\x03ttl\x18\x02 \x01(\x05\"\x12\n\x10NewQueueResponse\"9\n\x0f\x44\x65lQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x12\n\x10\x44\x65lQueueResponse\"A\n\x17GetAllQueueItemsRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"*\n\x18GetAllQueueItemsResponse\x12\x0e\n\x06values\x18\x01 \x03(\x0c\"9\n\x0fLenQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"\x1f\n\x10LenQueueResponse\x12\x0b\n\x03len\x18\x01 \x01(\x05\"I\n\x10PushQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05value\x18\x02 \x01(\x0c\"\x13\n\x11PushQueueResponse\"J\n\x11IndexQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\x12\r\n\x05index\x18\x02 \x01(\x05\"#\n\x12IndexQueueResponse\x12\r\n\x05value\x18\x01 \x01(\x0c\"9\n\x0fPopQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\".\n\x10PopQueueResponse\x12\r\n\x05value\x18\x01 \x01(\x0c\x12\x0b\n\x03\x65of\x18\x02 \x01(\x08\":\n\x10PeekQueueRequest\x12&\n\x08location\x18\x01 \x01(\x0b\x32\x14.protob.LocationType\"/\n\x11PeekQueueResponse\x12\r\n\x05value\x18\x01 \x01(\x0c\x12\x0b\n\x03\x65of\x18\x02 \x01(\x08*3\n\x0bScopeChoice\x12\x0c\n\x08Instance\x10\x00\x12\n\n\x06\x42ridge\x10\x01\x12\n\n\x06Global\x10\x02\x32\x88\x03\n\x02KV\x12\x34\n\x03Set\x12\x14.protob.SetKVRequest\x1a\x15.protob.SetKVResponse\"\x00\x12\x37\n\x04Incr\x12\x15.protob.IncrKVRequest\x1a\x16.protob.IncrKVResponse\"\x00\x12\x37\n\x04\x44\x65\x63r\x12\x15.protob.DecrKVRequest\x1a\x16.protob.DecrKVResponse\"\x00\x12\x34\n\x03\x44\x65l\x12\x14.protob.DelKVRequest\x1a\x15.protob.DelKVResponse\"\x00\x12\x34\n\x03Get\x12\x14.protob.GetKVRequest\x1a\x15.protob.GetKVResponse\"\x00\x12\x33\n\x04Lock\x12\x13.protob.LockRequest\x1a\x14.protob.LockResponse\"\x00\x12\x39\n\x06Unlock\x12\x15.protob.UnlockRequest\x1a\x16.protob.UnlockResponse\"\x00\x32\xd3\x05\n\x03Map\x12\x36\n\x03New\x12\x15.protob.NewMapRequest\x1a\x16.protob.NewMapResponse\"\x00\x12K\n\x06GetAll\x12\x1e.protob.GetAllMapFieldsRequest\x1a\x1f.protob.GetAllMapFieldsResponse\"\x00\x12\x36\n\x03Len\x12\x15.protob.LenMapRequest\x1a\x16.protob.LenMapResponse\"\x00\x12\x36\n\x03\x44\x65l\x12\x15.protob.DelMapRequest\x1a\x16.protob.DelMapResponse\"\x00\x12\x45\n\x08\x46ieldSet\x12\x1a.protob.SetMapFieldRequest\x1a\x1b.protob.SetMapFieldResponse\"\x00\x12H\n\tFieldIncr\x12\x1b.protob.IncrMapFieldRequest\x1a\x1c.protob.IncrMapFieldResponse\"\x00\x12H\n\tFieldDecr\x12\x1b.protob.DecrMapFieldRequest\x1a\x1c.protob.DecrMapFieldResponse\"\x00\x12\x45\n\x08\x46ieldDel\x12\x1a.protob.DelMapFieldRequest\x1a\x1b.protob.DelMapFieldResponse\"\x00\x12\x45\n\x08\x46ieldGet\x12\x1a.protob.GetMapFieldRequest\x1a\x1b.protob.GetMapFieldResponse\"\x00\x12\x33\n\x04Lock\x12\x13.protob.LockRequest\x1a\x14.protob.LockResponse\"\x00\x12\x39\n\x06Unlock\x12\x15.protob.UnlockRequest\x1a\x16.protob.UnlockResponse\"\x00\x32\xf6\x04\n\x05Queue\x12:\n\x03New\x12\x17.protob.NewQueueRequest\x1a\x18.protob.NewQueueResponse\"\x00\x12M\n\x06GetAll\x12\x1f.protob.GetAllQueueItemsRequest\x1a .protob.GetAllQueueItemsResponse\"\x00\x12:\n\x03Len\x12\x17.protob.LenQueueRequest\x1a\x18.protob.LenQueueResponse\"\x00\x12:\n\x03\x44\x65l\x12\x17.protob.DelQueueRequest\x1a\x18.protob.DelQueueResponse\"\x00\x12=\n\x04Push\x12\x18.protob.PushQueueRequest\x1a\x19.protob.PushQueueResponse\"\x00\x12@\n\x05Index\x12\x19.protob.IndexQueueRequest\x1a\x1a.protob.IndexQueueResponse\"\x00\x12:\n\x03Pop\x12\x17.protob.PopQueueRequest\x1a\x18.protob.PopQueueResponse\"\x00\x12=\n\x04Peek\x12\x18.protob.PeekQueueRequest\x1a\x19.protob.PeekQueueResponse\"\x00\x12\x33\n\x04Lock\x12\x13.protob.LockRequest\x1a\x14.protob.LockResponse\"\x00\x12\x39\n\x06Unlock\x12\x15.protob.UnlockRequest\x1a\x16.protob.UnlockResponse\"\x00\x42.Z,github.com/triggermesh/eventstore/pkg/protobb\x06proto3'
 )
 
 _SCOPECHOICE = _descriptor.EnumDescriptor(
@@ -48,8 +48,8 @@ _SCOPECHOICE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2588,
-  serialized_end=2639,
+  serialized_start=2624,
+  serialized_end=2675,
 )
 _sym_db.RegisterEnumDescriptor(_SCOPECHOICE)
 
@@ -128,6 +128,13 @@ _LOCATIONTYPE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='lockKey', full_name='protob.LocationType.lockKey', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -141,7 +148,7 @@ _LOCATIONTYPE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=110,
-  serialized_end=171,
+  serialized_end=188,
 )
 
 
@@ -186,8 +193,8 @@ _SETKVREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=173,
-  serialized_end=255,
+  serialized_start=190,
+  serialized_end=272,
 )
 
 
@@ -211,8 +218,8 @@ _SETKVRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=257,
-  serialized_end=272,
+  serialized_start=274,
+  serialized_end=289,
 )
 
 
@@ -250,8 +257,8 @@ _INCRKVREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=274,
-  serialized_end=343,
+  serialized_start=291,
+  serialized_end=360,
 )
 
 
@@ -275,8 +282,8 @@ _INCRKVRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=345,
-  serialized_end=361,
+  serialized_start=362,
+  serialized_end=378,
 )
 
 
@@ -314,8 +321,8 @@ _DECRKVREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=363,
-  serialized_end=432,
+  serialized_start=380,
+  serialized_end=449,
 )
 
 
@@ -339,8 +346,8 @@ _DECRKVRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=434,
-  serialized_end=450,
+  serialized_start=451,
+  serialized_end=467,
 )
 
 
@@ -371,8 +378,8 @@ _GETKVREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=452,
-  serialized_end=506,
+  serialized_start=469,
+  serialized_end=523,
 )
 
 
@@ -403,8 +410,8 @@ _GETKVRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=508,
-  serialized_end=538,
+  serialized_start=525,
+  serialized_end=555,
 )
 
 
@@ -435,8 +442,8 @@ _DELKVREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=540,
-  serialized_end=594,
+  serialized_start=557,
+  serialized_end=611,
 )
 
 
@@ -460,8 +467,8 @@ _DELKVRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=596,
-  serialized_end=611,
+  serialized_start=613,
+  serialized_end=628,
 )
 
 
@@ -499,8 +506,8 @@ _LOCKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=613,
-  serialized_end=683,
+  serialized_start=630,
+  serialized_end=700,
 )
 
 
@@ -513,7 +520,7 @@ _LOCKRESPONSE = _descriptor.Descriptor(
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='unlock', full_name='protob.LockResponse.unlock', index=0,
+      name='lockKey', full_name='protob.LockResponse.lockKey', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -531,8 +538,8 @@ _LOCKRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=685,
-  serialized_end=715,
+  serialized_start=702,
+  serialized_end=733,
 )
 
 
@@ -551,13 +558,6 @@ _UNLOCKREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='unlock', full_name='protob.UnlockRequest.unlock', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -570,8 +570,8 @@ _UNLOCKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=717,
-  serialized_end=788,
+  serialized_start=735,
+  serialized_end=790,
 )
 
 
@@ -595,8 +595,8 @@ _UNLOCKRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=790,
-  serialized_end=806,
+  serialized_start=792,
+  serialized_end=808,
 )
 
 
@@ -634,8 +634,8 @@ _NEWMAPREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=808,
-  serialized_end=876,
+  serialized_start=810,
+  serialized_end=878,
 )
 
 
@@ -659,8 +659,8 @@ _NEWMAPRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=878,
-  serialized_end=894,
+  serialized_start=880,
+  serialized_end=896,
 )
 
 
@@ -691,8 +691,8 @@ _DELMAPREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=896,
-  serialized_end=951,
+  serialized_start=898,
+  serialized_end=953,
 )
 
 
@@ -716,8 +716,8 @@ _DELMAPRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=953,
-  serialized_end=969,
+  serialized_start=955,
+  serialized_end=971,
 )
 
 
@@ -748,8 +748,8 @@ _GETALLMAPFIELDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=971,
-  serialized_end=1035,
+  serialized_start=973,
+  serialized_end=1037,
 )
 
 
@@ -787,8 +787,8 @@ _GETALLMAPFIELDSRESPONSE_VALUESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1126,
-  serialized_end=1171,
+  serialized_start=1128,
+  serialized_end=1173,
 )
 
 _GETALLMAPFIELDSRESPONSE = _descriptor.Descriptor(
@@ -818,8 +818,8 @@ _GETALLMAPFIELDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1038,
-  serialized_end=1171,
+  serialized_start=1040,
+  serialized_end=1173,
 )
 
 
@@ -850,8 +850,8 @@ _LENMAPREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1173,
-  serialized_end=1228,
+  serialized_start=1175,
+  serialized_end=1230,
 )
 
 
@@ -882,8 +882,8 @@ _LENMAPRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1230,
-  serialized_end=1259,
+  serialized_start=1232,
+  serialized_end=1261,
 )
 
 
@@ -928,8 +928,8 @@ _SETMAPFIELDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1261,
-  serialized_end=1351,
+  serialized_start=1263,
+  serialized_end=1353,
 )
 
 
@@ -953,8 +953,8 @@ _SETMAPFIELDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1353,
-  serialized_end=1374,
+  serialized_start=1355,
+  serialized_end=1376,
 )
 
 
@@ -999,8 +999,8 @@ _INCRMAPFIELDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1376,
-  serialized_end=1466,
+  serialized_start=1378,
+  serialized_end=1468,
 )
 
 
@@ -1024,8 +1024,8 @@ _INCRMAPFIELDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1468,
-  serialized_end=1490,
+  serialized_start=1470,
+  serialized_end=1492,
 )
 
 
@@ -1070,8 +1070,8 @@ _DECRMAPFIELDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1492,
-  serialized_end=1582,
+  serialized_start=1494,
+  serialized_end=1584,
 )
 
 
@@ -1095,8 +1095,8 @@ _DECRMAPFIELDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1584,
-  serialized_end=1606,
+  serialized_start=1586,
+  serialized_end=1608,
 )
 
 
@@ -1134,8 +1134,8 @@ _DELMAPFIELDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1608,
-  serialized_end=1683,
+  serialized_start=1610,
+  serialized_end=1685,
 )
 
 
@@ -1159,8 +1159,8 @@ _DELMAPFIELDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1685,
-  serialized_end=1706,
+  serialized_start=1687,
+  serialized_end=1708,
 )
 
 
@@ -1198,8 +1198,8 @@ _GETMAPFIELDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1708,
-  serialized_end=1783,
+  serialized_start=1710,
+  serialized_end=1785,
 )
 
 
@@ -1230,8 +1230,8 @@ _GETMAPFIELDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1785,
-  serialized_end=1821,
+  serialized_start=1787,
+  serialized_end=1823,
 )
 
 
@@ -1269,8 +1269,8 @@ _NEWQUEUEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1823,
-  serialized_end=1893,
+  serialized_start=1825,
+  serialized_end=1895,
 )
 
 
@@ -1294,8 +1294,8 @@ _NEWQUEUERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1895,
-  serialized_end=1913,
+  serialized_start=1897,
+  serialized_end=1915,
 )
 
 
@@ -1326,8 +1326,8 @@ _DELQUEUEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1915,
-  serialized_end=1972,
+  serialized_start=1917,
+  serialized_end=1974,
 )
 
 
@@ -1351,21 +1351,21 @@ _DELQUEUERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1974,
-  serialized_end=1992,
+  serialized_start=1976,
+  serialized_end=1994,
 )
 
 
-_GETALLQUEUESREQUEST = _descriptor.Descriptor(
-  name='GetAllQueuesRequest',
-  full_name='protob.GetAllQueuesRequest',
+_GETALLQUEUEITEMSREQUEST = _descriptor.Descriptor(
+  name='GetAllQueueItemsRequest',
+  full_name='protob.GetAllQueueItemsRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='location', full_name='protob.GetAllQueuesRequest.location', index=0,
+      name='location', full_name='protob.GetAllQueueItemsRequest.location', index=0,
       number=1, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1383,21 +1383,21 @@ _GETALLQUEUESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1994,
-  serialized_end=2055,
+  serialized_start=1996,
+  serialized_end=2061,
 )
 
 
-_GETALLQUEUESRESPONSE = _descriptor.Descriptor(
-  name='GetAllQueuesResponse',
-  full_name='protob.GetAllQueuesResponse',
+_GETALLQUEUEITEMSRESPONSE = _descriptor.Descriptor(
+  name='GetAllQueueItemsResponse',
+  full_name='protob.GetAllQueueItemsResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='values', full_name='protob.GetAllQueuesResponse.values', index=0,
+      name='values', full_name='protob.GetAllQueueItemsResponse.values', index=0,
       number=1, type=12, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1415,8 +1415,8 @@ _GETALLQUEUESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2057,
-  serialized_end=2095,
+  serialized_start=2063,
+  serialized_end=2105,
 )
 
 
@@ -1447,8 +1447,8 @@ _LENQUEUEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2097,
-  serialized_end=2154,
+  serialized_start=2107,
+  serialized_end=2164,
 )
 
 
@@ -1479,8 +1479,8 @@ _LENQUEUERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2156,
-  serialized_end=2187,
+  serialized_start=2166,
+  serialized_end=2197,
 )
 
 
@@ -1518,8 +1518,8 @@ _PUSHQUEUEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2189,
-  serialized_end=2262,
+  serialized_start=2199,
+  serialized_end=2272,
 )
 
 
@@ -1543,8 +1543,8 @@ _PUSHQUEUERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2264,
-  serialized_end=2283,
+  serialized_start=2274,
+  serialized_end=2293,
 )
 
 
@@ -1582,8 +1582,8 @@ _INDEXQUEUEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2285,
-  serialized_end=2359,
+  serialized_start=2295,
+  serialized_end=2369,
 )
 
 
@@ -1614,8 +1614,8 @@ _INDEXQUEUERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2361,
-  serialized_end=2396,
+  serialized_start=2371,
+  serialized_end=2406,
 )
 
 
@@ -1646,8 +1646,8 @@ _POPQUEUEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2398,
-  serialized_end=2455,
+  serialized_start=2408,
+  serialized_end=2465,
 )
 
 
@@ -1666,6 +1666,13 @@ _POPQUEUERESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='eof', full_name='protob.PopQueueResponse.eof', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1678,8 +1685,8 @@ _POPQUEUERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2457,
-  serialized_end=2490,
+  serialized_start=2467,
+  serialized_end=2513,
 )
 
 
@@ -1710,8 +1717,8 @@ _PEEKQUEUEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2492,
-  serialized_end=2550,
+  serialized_start=2515,
+  serialized_end=2573,
 )
 
 
@@ -1730,6 +1737,13 @@ _PEEKQUEUERESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='eof', full_name='protob.PeekQueueResponse.eof', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -1742,8 +1756,8 @@ _PEEKQUEUERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2552,
-  serialized_end=2586,
+  serialized_start=2575,
+  serialized_end=2622,
 )
 
 _SCOPETYPE.fields_by_name['type'].enum_type = _SCOPECHOICE
@@ -1768,7 +1782,7 @@ _DELMAPFIELDREQUEST.fields_by_name['location'].message_type = _LOCATIONTYPE
 _GETMAPFIELDREQUEST.fields_by_name['location'].message_type = _LOCATIONTYPE
 _NEWQUEUEREQUEST.fields_by_name['location'].message_type = _LOCATIONTYPE
 _DELQUEUEREQUEST.fields_by_name['location'].message_type = _LOCATIONTYPE
-_GETALLQUEUESREQUEST.fields_by_name['location'].message_type = _LOCATIONTYPE
+_GETALLQUEUEITEMSREQUEST.fields_by_name['location'].message_type = _LOCATIONTYPE
 _LENQUEUEREQUEST.fields_by_name['location'].message_type = _LOCATIONTYPE
 _PUSHQUEUEREQUEST.fields_by_name['location'].message_type = _LOCATIONTYPE
 _INDEXQUEUEREQUEST.fields_by_name['location'].message_type = _LOCATIONTYPE
@@ -1812,8 +1826,8 @@ DESCRIPTOR.message_types_by_name['NewQueueRequest'] = _NEWQUEUEREQUEST
 DESCRIPTOR.message_types_by_name['NewQueueResponse'] = _NEWQUEUERESPONSE
 DESCRIPTOR.message_types_by_name['DelQueueRequest'] = _DELQUEUEREQUEST
 DESCRIPTOR.message_types_by_name['DelQueueResponse'] = _DELQUEUERESPONSE
-DESCRIPTOR.message_types_by_name['GetAllQueuesRequest'] = _GETALLQUEUESREQUEST
-DESCRIPTOR.message_types_by_name['GetAllQueuesResponse'] = _GETALLQUEUESRESPONSE
+DESCRIPTOR.message_types_by_name['GetAllQueueItemsRequest'] = _GETALLQUEUEITEMSREQUEST
+DESCRIPTOR.message_types_by_name['GetAllQueueItemsResponse'] = _GETALLQUEUEITEMSRESPONSE
 DESCRIPTOR.message_types_by_name['LenQueueRequest'] = _LENQUEUEREQUEST
 DESCRIPTOR.message_types_by_name['LenQueueResponse'] = _LENQUEUERESPONSE
 DESCRIPTOR.message_types_by_name['PushQueueRequest'] = _PUSHQUEUEREQUEST
@@ -2101,19 +2115,19 @@ DelQueueResponse = _reflection.GeneratedProtocolMessageType('DelQueueResponse', 
   })
 _sym_db.RegisterMessage(DelQueueResponse)
 
-GetAllQueuesRequest = _reflection.GeneratedProtocolMessageType('GetAllQueuesRequest', (_message.Message,), {
-  'DESCRIPTOR' : _GETALLQUEUESREQUEST,
+GetAllQueueItemsRequest = _reflection.GeneratedProtocolMessageType('GetAllQueueItemsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETALLQUEUEITEMSREQUEST,
   '__module__' : 'eventstore_pb2'
-  # @@protoc_insertion_point(class_scope:protob.GetAllQueuesRequest)
+  # @@protoc_insertion_point(class_scope:protob.GetAllQueueItemsRequest)
   })
-_sym_db.RegisterMessage(GetAllQueuesRequest)
+_sym_db.RegisterMessage(GetAllQueueItemsRequest)
 
-GetAllQueuesResponse = _reflection.GeneratedProtocolMessageType('GetAllQueuesResponse', (_message.Message,), {
-  'DESCRIPTOR' : _GETALLQUEUESRESPONSE,
+GetAllQueueItemsResponse = _reflection.GeneratedProtocolMessageType('GetAllQueueItemsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _GETALLQUEUEITEMSRESPONSE,
   '__module__' : 'eventstore_pb2'
-  # @@protoc_insertion_point(class_scope:protob.GetAllQueuesResponse)
+  # @@protoc_insertion_point(class_scope:protob.GetAllQueueItemsResponse)
   })
-_sym_db.RegisterMessage(GetAllQueuesResponse)
+_sym_db.RegisterMessage(GetAllQueueItemsResponse)
 
 LenQueueRequest = _reflection.GeneratedProtocolMessageType('LenQueueRequest', (_message.Message,), {
   'DESCRIPTOR' : _LENQUEUEREQUEST,
@@ -2196,8 +2210,8 @@ _KV = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=2642,
-  serialized_end=3034,
+  serialized_start=2678,
+  serialized_end=3070,
   methods=[
   _descriptor.MethodDescriptor(
     name='Set',
@@ -2282,8 +2296,8 @@ _MAP = _descriptor.ServiceDescriptor(
   index=1,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=3037,
-  serialized_end=3763,
+  serialized_start=3073,
+  serialized_end=3796,
   methods=[
   _descriptor.MethodDescriptor(
     name='New',
@@ -2296,8 +2310,8 @@ _MAP = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
   _descriptor.MethodDescriptor(
-    name='GetFields',
-    full_name='protob.Map.GetFields',
+    name='GetAll',
+    full_name='protob.Map.GetAll',
     index=1,
     containing_service=None,
     input_type=_GETALLMAPFIELDSREQUEST,
@@ -2408,8 +2422,8 @@ _QUEUE = _descriptor.ServiceDescriptor(
   index=2,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=3766,
-  serialized_end=4276,
+  serialized_start=3799,
+  serialized_end=4429,
   methods=[
   _descriptor.MethodDescriptor(
     name='New',
@@ -2426,8 +2440,8 @@ _QUEUE = _descriptor.ServiceDescriptor(
     full_name='protob.Queue.GetAll',
     index=1,
     containing_service=None,
-    input_type=_GETALLQUEUESREQUEST,
-    output_type=_GETALLQUEUESRESPONSE,
+    input_type=_GETALLQUEUEITEMSREQUEST,
+    output_type=_GETALLQUEUEITEMSRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
@@ -2491,26 +2505,10 @@ _QUEUE = _descriptor.ServiceDescriptor(
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
-])
-_sym_db.RegisterServiceDescriptor(_QUEUE)
-
-DESCRIPTOR.services_by_name['Queue'] = _QUEUE
-
-
-_SYNC = _descriptor.ServiceDescriptor(
-  name='Sync',
-  full_name='protob.Sync',
-  file=DESCRIPTOR,
-  index=3,
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_start=4278,
-  serialized_end=4396,
-  methods=[
   _descriptor.MethodDescriptor(
     name='Lock',
-    full_name='protob.Sync.Lock',
-    index=0,
+    full_name='protob.Queue.Lock',
+    index=8,
     containing_service=None,
     input_type=_LOCKREQUEST,
     output_type=_LOCKRESPONSE,
@@ -2519,8 +2517,8 @@ _SYNC = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='Unlock',
-    full_name='protob.Sync.Unlock',
-    index=1,
+    full_name='protob.Queue.Unlock',
+    index=9,
     containing_service=None,
     input_type=_UNLOCKREQUEST,
     output_type=_UNLOCKRESPONSE,
@@ -2528,8 +2526,8 @@ _SYNC = _descriptor.ServiceDescriptor(
     create_key=_descriptor._internal_create_key,
   ),
 ])
-_sym_db.RegisterServiceDescriptor(_SYNC)
+_sym_db.RegisterServiceDescriptor(_QUEUE)
 
-DESCRIPTOR.services_by_name['Sync'] = _SYNC
+DESCRIPTOR.services_by_name['Queue'] = _QUEUE
 
 # @@protoc_insertion_point(module_scope)
