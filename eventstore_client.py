@@ -1,3 +1,4 @@
+import os
 import grpc
 
 import eventstore_pb2
@@ -15,12 +16,14 @@ class Client:
     
     def NewMap(self, key, **kwargs):
         ttl = kwargs.get("ttl", None)
+        lockKey = kwargs.get("lockKey", None)
         scope = self.__defineScope(**kwargs)
-        return Client.Map(self, key, scope, ttl)
+        return Client.Map(self, key, scope, ttl, lockKey)
     
-    def NewQueue(self, **kwargs):
+    def NewQueue(self, key, **kwargs):
+        lockKey = kwargs.get("lockKey", None)
         scope = self.__defineScope(**kwargs)
-        return Client.Queue(self, scope)
+        return Client.Queue(self, key, scope, lockKey)
 
     def Close(self):
         return self.channel.close()
@@ -85,19 +88,54 @@ class Client:
             )
             return self.stub.Del(request)
 
-        def Incr(self):
-            pass
-        def Decr(self):
-            pass
-        def Lock(self):
-            pass
-        def Unlock(self):
-            pass
+        def Incr(self, key, incr):
+            request = eventstore_pb2.IncrKVRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = self.lockKey,
+                    key = key
+                )
+                incr = incr
+            )
+            return self.stub.Incr(request)
+
+        def Decr(self, key, decr):
+            request = eventstore_pb2.DecrKVRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = self.lockKey,
+                    key = key
+                )
+                decr = decr
+            )
+            return self.stub.Decr(request)
+
+        def Lock(self, key, lockKey, timeout):
+            request = eventstore_pb2.LockRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = lockKey,
+                    key = key
+                )
+                timeout = timeout
+            )
+            return self.stub.Lock(request)
+
+        def Unlock(self, key, lockKey):
+            request = eventstore_pb2.UnlockRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = lockKey,
+                    key = key
+                )
+            )
+            return self.stub.Unlock(request)
     
     class Map(object):
-        def __init__(self, client, key, scope, ttl):
+        def __init__(self, client, key, scope, ttl, lockKey):
             self.key = key
             self.ttl = ttl
+            self.lockKey = lockKey
             self.scope = scope
             self.stub = eventstore_pb2_grpc.MapStub(client.channel)
 
@@ -107,6 +145,7 @@ class Client:
             request = eventstore_pb2.NewMapRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
+                    lockKey = self.lockKey,
                     key = self.key
                 ),
                 ttl = self.ttl
@@ -117,6 +156,7 @@ class Client:
             request = eventstore_pb2.SetMapFieldRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
+                    lockKey = self.lockKey,
                     key = self.key
                 ),
                 field = field,
@@ -128,6 +168,7 @@ class Client:
             request = eventstore_pb2.GetMapFieldRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
+                    lockKey = self.lockKey,
                     key = self.key
                 ),
                 field = field
@@ -138,6 +179,7 @@ class Client:
             request = eventstore_pb2.GetAllMapFieldsRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
+                    lockKey = self.lockKey,
                     key = self.key
                 )
             )
@@ -147,6 +189,7 @@ class Client:
             request = eventstore_pb2.LenMapRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
+                    lockKey = self.lockKey,
                     key = self.key
                 )
             )
@@ -156,68 +199,182 @@ class Client:
             request = eventstore_pb2.DelMapRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
+                    lockKey = self.lockKey,
                     key = self.key
                 )
             )
             return self.stub.Del(request)
 
-        def IncrField():
-            pass
-        def DecrField():
-            pass
-        def DelField():
-            pass
-        def Lock():
-            pass
-        def Unlock():
-            pass
+        def IncrField(self, field, incr):
+            request = eventstore_pb2.IncrMapFieldRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = self.lockKey,
+                    key = self.key
+                ),
+                field = field,
+                incr = incr
+            )
+            return self.stub.FieldIncr(request)
 
-    # Not implemented yet
+        def DecrField(self, field, decr):
+            request = eventstore_pb2.DecrMapFieldRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = self.lockKey,
+                    key = self.key
+                ),
+                field = field,
+                decr = decr
+            )
+            return self.stub.FieldDecr(request)
+
+        def DelField(self, field):
+            request = eventstore_pb2.DelMapFieldRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = self.lockKey,
+                    key = self.key
+                ),
+                field = field
+            )
+            return self.stub.FieldDel(request)
+
+        def Lock(self, lockKey, timeout):
+            request = eventstore_pb2.LockRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = lockKey,
+                    key = self.key
+                )
+                timeout = timeout
+            )
+            return self.Stub.Lock(request)
+
+        def Unlock(self, lockKey):
+            request = eventstore_pb2.UnlockRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = lockKey,
+                    key = self.key
+                )
+            )
+            return self.Stub.Unlock(request)
+
     class Queue(object):
-        def __init__(self, client, scope):
+        def __init__(self, client, key, scope, lockKey):
+            self.key = key
             self.scope = scope
+            self.lockKey = lockKey
             self.stub = eventstore_pb2_grpc.QueueStub(client.channel)
 
-        def New(self, key, **kwargs):
+            self.__new()
+
+        def __new(self):
             request = eventstore_pb2.NewQueueRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
-                    key = key
-                ),
-                ttl = kwargs.get("ttl", None),
+                    lockKey = self.lockKey,
+                    key = self.key
+                )
             )
+            return self.stub.New(request)
 
-        def Push(self, key, value, **kwargs):
+        def Push(self, value):
             request = eventstore_pb2.PushQueueRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
-                    key = key
+                    lockKey = self.lockKey,
+                    key = self.key
                 ),
                 value = value
             )
-            resp = self.stub.Set(request)
-            return resp
+            return self.stub.Push(request)
 
-        def Pop(self, key, **kwargs):
+        def Pop(self):
             request = eventstore_pb2.PopQueueRequest(
                 location = eventstore_pb2.LocationType(
                     scope = self.scope,
+                    lockKey = self.lockKey,
+                    key = self.key
+                )
+            )
+            return self.stub.Pop(request)
+        
+        def GetAll(self):
+            request = eventstore_pb2.GetAllQueueItemsRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = self.lockKey,
+                    key = self.key
+                )
+            )
+            return self.stub.GetAll(request)
+
+        def Len(self):
+            request = eventstore_pb2.LenQueueRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = self.lockKey,
+                    key = self.key
+                )
+            )
+            return self.stub.Len(request)
+
+        def Del(self):
+            request = eventstore_pb2.DelQueueRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = self.lockKey,
+                    key = self.key
+                )
+            )
+            return self.stub.Del(request)
+
+        def Index(self, index):
+            request = eventstore_pb2.IndexQueueRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = self.lockKey,
+                    key = self.key
+                ),
+                index = index
+            )
+            return self.stub.Index(request)
+
+        def Peek(self):
+            request = eventstore_pb2.PeekQueueRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = self.lockKey,
+                    key = self.key
+                )
+            )
+            return self.stub.Peek(request)
+
+        def Lock(self, key, timeout):
+            request = eventstore_pb2.LockRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = self.lockKey,
+                    key = key
+                )
+                timeout = timeout
+            )
+            return self.stub.Lock(request)
+
+        def Unlock(self, key):
+            request = eventstore_pb2.UnlockRequest(
+                location = eventstore_pb2.LocationType(
+                    scope = self.scope,
+                    lockKey = self.lockKey,
                     key = key
                 )
             )
-            resp = self.stub.Get(request)
-            return resp
-        
-        def GetAll(self):
-            pass
-        def Len(self):
-            pass
-        def Del(self):
-            pass
-        def Index(self):
-            pass
-        def Peek(self):
-            pass
+            return self.stub.Unlock(request)
 
-def Connect(server):
+def New(*args):
+    server = os.environ.get('EVENTSTORE_URL')
+    if len(args) != 0:
+        server = args[0]
     return Client(server)

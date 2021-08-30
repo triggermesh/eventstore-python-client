@@ -1,6 +1,6 @@
 import eventstore_client as client
 
-c = client.Connect("localhost:8080")
+c = client.New("localhost:8080")
 
 globalKV = c.NewKV()
 globalKV.Set("foo", str.encode("global"), ttl=180)
