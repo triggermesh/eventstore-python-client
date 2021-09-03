@@ -74,7 +74,7 @@ class Client:
       )
 
 def new(*args):
-  server = os.environ.get("EVENTSTORE_URL")
+  server = os.environ.get("EVENTSTORE_URI")
   if len(args) != 0:
     server = args[0]
   return Client(server)

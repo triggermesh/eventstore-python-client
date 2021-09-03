@@ -2,7 +2,7 @@ import eventstore_client as client
 
 # Create new client instance with the server on provided address.
 # If no server address is provided, 
-# client will look at EVENTSTORE_URL environment variable.
+# client will look at EVENTSTORE_URI environment variable.
 c = client.new("localhost:8080")
 
 # Create new KV storage with default Global scope and default ttl.
